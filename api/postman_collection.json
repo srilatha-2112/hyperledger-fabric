@@ -1,0 +1,71 @@
+{
+  "info": {
+    "name": "Fabric API",
+    "_postman_id": "fabric-api-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/health"
+      }
+    },
+    {
+      "name": "List Assets",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/assets"
+      }
+    },
+    {
+      "name": "Create Asset",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"DEALERID\": \"D123\", \"MSISDN\": \"9000000001\", \"MPIN\": \"1234\", \"BALANCE\": 1000, \"STATUS\": \"ACTIVE\", \"TRANSAMOUNT\": 0, \"TRANSTYPE\": \"INIT\", \"REMARKS\": \"created\"}"
+        },
+        "url": "http://localhost:8080/assets"
+      }
+    },
+    {
+      "name": "Read Asset",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/assets/9000000001"
+      }
+    },
+    {
+      "name": "Update Asset",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"DEALERID\": \"D123\", \"MSISDN\": \"9000000001\", \"MPIN\": \"9999\", \"BALANCE\": 1500, \"STATUS\": \"ACTIVE\", \"TRANSAMOUNT\": 500, \"TRANSTYPE\": \"CREDIT\", \"REMARKS\": \"topup\"}"
+        },
+        "url": "http://localhost:8080/assets/9000000001"
+      }
+    },
+    {
+      "name": "History",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/assets/9000000001/history"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+services:
+  fabric-api:
+    build: .
+    image: fabric-api:latest
+    container_name: fabric-api
+    ports:
+      - "8080:8080"
+    environment:
+      API_ADDR: ":8080"
+      PEER_ENDPOINT: "peer0.org1.example.com:7051"
+      GATEWAY_PEER: "peer0.org1.example.com"
+      MSP_ID: "Org1MSP"
+      CHANNEL_NAME: "mychannel"
+      CHAINCODE_NAME: "asset-management"
+      TLS_CERT_PATH: "/orgs/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+      CERT_PATH: "/orgs/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/cert.pem"
+      KEY_PATH: "/orgs/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/priv_sk"
+    volumes:
+      - "${HOME}/fabric-samples/test-network/organizations:/orgs:ro"
+    restart: unless-stopped
